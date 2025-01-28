@@ -1,5 +1,3 @@
-# Represents an extended dockable that holds a random amount of mineable
-# resources.
 class_name Asteroid
 extends DockingPoint
 
@@ -16,7 +14,6 @@ signal depleted
 
 var iron_amount := 0.0
 
-
 func _ready() -> void:
 	super()
 	anim_player.speed_scale = randf_range(0.5, 2.0)
@@ -25,8 +22,7 @@ func _ready() -> void:
 func setup(rng: RandomNumberGenerator) -> void:
 	iron_amount = rng.randf_range(min_iron_amount, max_iron_amount)
 	scale *= max(iron_amount / max_iron_amount, min_scale)
-
-
+	
 func mine_amount(value: float) -> float:
 	var mined_amount: float = min(iron_amount, value)
 	iron_amount -= mined_amount
@@ -35,10 +31,12 @@ func mine_amount(value: float) -> float:
 	if is_equal_approx(iron_amount, 0.0):
 		undock()
 		shrink()
+		Events.ore_mined.emit() 
 	elif not anim_player.is_playing():
 		fx_anim_player.play("pulse")
 
 	return mined_amount
+	#mined.emit(iron_extracted)
 
 
 # Animates the asteroid shrinking down and frees it.

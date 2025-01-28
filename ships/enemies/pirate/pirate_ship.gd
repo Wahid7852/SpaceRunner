@@ -108,14 +108,14 @@ func _die() -> void:
 	var effect: Node2D = explosion_effect.instantiate()
 	ObjectRegistry.register_effect(effect)
 	effect.global_position = global_position
+	Events.enemy_died.emit(global_position)
+
 	died.emit()
-	var new_leader: CharacterBody2D
+	var new_leader: CharacterBody2D = null
 	for squaddie_ref in squaddies:
 		var squaddie: CharacterBody2D = squaddie_ref.get_ref()
 		if not squaddie:
 			continue
-		# FIXME: I had an error because a Projectile was in the squaddies array
-		# We should ensure this cannot happen, and squaddies are all from the faction
 		if not squaddie.is_in_group("Enemies"):
 			continue
 		if squaddie._health > 0:

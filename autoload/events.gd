@@ -35,6 +35,9 @@ signal mine_finished
 
 signal explosion_occurred
 
+signal enemy_died(position: Vector2)
+signal ore_mined
+
 enum UpgradeChoices { HEALTH, SPEED, CARGO, MINING, WEAPON }
 
 enum UITypes { UPGRADE, QUIT }

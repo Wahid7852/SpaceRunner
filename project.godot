@@ -21,6 +21,7 @@ config/icon="res://icon.png"
 
 Events="*res://autoload/events.gd"
 ObjectRegistry="*res://autoload/object_registry.tscn"
+ScoreManager="*res://autoload/score_manager.gd"
 
 [debug]
 
