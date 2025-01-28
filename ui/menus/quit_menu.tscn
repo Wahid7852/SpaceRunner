@@ -1,13 +1,12 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=5 format=3 uid="uid://dapb2vbqpdne5"]
 
-[ext_resource path="res://ui/fonts/default_font.tres" type="FontFile" id=1]
-[ext_resource path="res://ui/menus/sounds/menu_sound_player.tscn" type="PackedScene" id=2]
-[ext_resource path="res://ui/fonts/default_font_bold.tres" type="FontFile" id=5]
-[ext_resource path="res://ui/menus/quit_menu.gd" type="Script" id=6]
-
-
+[ext_resource type="FontFile" path="res://ui/fonts/default_font.tres" id="1"]
+[ext_resource type="PackedScene" path="res://ui/menus/sounds/menu_sound_player.tscn" id="2"]
+[ext_resource type="FontFile" path="res://ui/fonts/default_font_bold.tres" id="5"]
+[ext_resource type="Script" path="res://ui/menus/quit_menu.gd" id="6"]
 
 [node name="QuitMenu" type="MarginContainer"]
+anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -16,80 +15,58 @@ offset_left = -155.0
 offset_top = -60.0
 offset_right = 155.0
 offset_bottom = 60.0
-theme_override_constants/margin_right = 20
-theme_override_constants/margin_top = 20
 theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
-script = ExtResource( 6 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+script = ExtResource("6")
 
 [node name="Panel" type="Panel" parent="."]
-offset_left = 20.0
-offset_top = 20.0
-offset_right = 290.0
-offset_bottom = 100.0
-custom_minimum_size = Vector2( 270, 80 )
+custom_minimum_size = Vector2(270, 80)
+layout_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
-offset_left = 20.0
-offset_top = 20.0
-offset_right = 290.0
-offset_bottom = 100.0
+layout_mode = 2
 theme_override_constants/separation = 10
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Label" type="Label" parent="VBoxContainer"]
-offset_right = 270.0
-offset_bottom = 26.0
-theme_override_fonts/font = ExtResource( 1 )
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1")
 text = "Really quit?"
-align = 1
+horizontal_alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
-offset_top = 36.0
-offset_right = 270.0
-offset_bottom = 68.0
-custom_minimum_size = Vector2( 0, 32 )
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
 alignment = 1
 
 [node name="YesButton" type="Button" parent="VBoxContainer/HBoxContainer"]
-offset_left = 5.0
-offset_right = 133.0
-offset_bottom = 32.0
-custom_minimum_size = Vector2( 128, 0 )
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
 
 [node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/YesButton"]
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
-theme_override_fonts/font = ExtResource( 5 )
+theme_override_fonts/font = ExtResource("5")
 text = "Yes"
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="NoButton" type="Button" parent="VBoxContainer/HBoxContainer"]
-offset_left = 137.0
-offset_right = 265.0
-offset_bottom = 32.0
-custom_minimum_size = Vector2( 128, 0 )
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
 
 [node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/NoButton"]
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
-theme_override_fonts/font = ExtResource( 5 )
+theme_override_fonts/font = ExtResource("5")
 text = "No"
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="MenuSoundPlayer" parent="." instance=ExtResource( 2 )]
+[node name="MenuSoundPlayer" parent="." instance=ExtResource("2")]
+
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/YesButton" to="." method="_on_YesButton_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/NoButton" to="." method="_on_NoButton_pressed"]

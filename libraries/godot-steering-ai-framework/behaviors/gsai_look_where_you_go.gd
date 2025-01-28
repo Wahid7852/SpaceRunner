@@ -1,6 +1,3 @@
-# Calculates an angular acceleration to match an agent's orientation to its
-# direction of travel.
-# @category - Individual behaviors
 class_name GSAILookWhereYouGo
 extends GSAIMatchOrientation
 

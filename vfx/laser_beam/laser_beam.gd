@@ -1,8 +1,8 @@
 extends RayCast2D
 
 @export var cast_speed := 7000.0
-@export var max_length := 1500
-@export var growth_time := 0.25
+@export var max_length := 1400
+@export var growth_time := 0.1
 
 @onready var casting_particles := $CastingParticles2D
 @onready var collision_particles := $CollisionParticles2D

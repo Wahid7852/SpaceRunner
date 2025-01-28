@@ -1,6 +1,5 @@
-[gd_scene load_steps=26 format=3 uid="uid://bjne51x01i88h"]
+[gd_scene load_steps=25 format=3 uid="uid://bjne51x01i88h"]
 
-[ext_resource type="Texture2D" uid="uid://gso271go2fev" path="res://ui/main_screen/envelope-foreground.png" id="1"]
 [ext_resource type="Texture2D" uid="uid://cbujfepgfuvom" path="res://ui/main_screen/envelope-background.png" id="2"]
 [ext_resource type="Script" path="res://ui/main_screen/main_screen.gd" id="3"]
 [ext_resource type="Texture2D" uid="uid://cl37op10gaek8" path="res://ui/main_screen/gdquest-logo.png" id="4"]
@@ -153,6 +152,13 @@ _data = {
 "idle": SubResource("7")
 }
 
+[sub_resource type="GDScript" id="10"]
+script/source = "extends TextureButton
+
+func _pressed() -> void:
+	OS.shell_open(\"https://gdquest.com\")
+"
+
 [sub_resource type="Animation" id="8"]
 length = 4.0
 loop_mode = 1
@@ -160,7 +166,7 @@ step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Foreground/MarginContainer/ColorRect/GDQuestLogo:rotation")
+tracks/0/path = NodePath("MarginContainer/MarginContainer/Foreground/MarginContainer/ColorRect/TeamLogo:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -172,7 +178,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Foreground/MarginContainer/ColorRect/GDQuestLogo:scale")
+tracks/1/path = NodePath("MarginContainer/MarginContainer/Foreground/MarginContainer/ColorRect/TeamLogo:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -188,7 +194,7 @@ step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Foreground/MarginContainer/ColorRect/GDQuestLogo:position")
+tracks/0/path = NodePath("MarginContainer/MarginContainer/Foreground/MarginContainer/ColorRect/TeamLogo:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -200,7 +206,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Foreground/MarginContainer/ColorRect/HarvesterLogo:scale")
+tracks/1/path = NodePath("MarginContainer/MarginContainer/Foreground/MarginContainer/ColorRect/EliteLogo:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -212,7 +218,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Foreground/MarginContainer/ColorRect/HarvesterLogo:rotation")
+tracks/2/path = NodePath("MarginContainer/MarginContainer/Foreground/MarginContainer/ColorRect/EliteLogo:rotation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -224,7 +230,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Foreground/MarginContainer/ColorRect/GDQuestLogo:rotation")
+tracks/3/path = NodePath("MarginContainer/MarginContainer/Foreground/MarginContainer/ColorRect/TeamLogo:rotation")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -239,13 +245,6 @@ _data = {
 "idle": SubResource("8"),
 "intro": SubResource("9")
 }
-
-[sub_resource type="GDScript" id="10"]
-script/source = "extends TextureButton
-
-func _pressed() -> void:
-	OS.shell_open(\"https://gdquest.com\")
-"
 
 [node name="MainScreen" type="Control"]
 layout_mode = 3
@@ -376,16 +375,10 @@ libraries = {
 }
 autoplay = "idle"
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_cg3t5")
-}
-autoplay = "intro"
-
-[node name="Foreground" type="CanvasLayer" parent="."]
+[node name="Foreground" type="CanvasLayer" parent="MarginContainer/MarginContainer"]
 layer = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="Foreground"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/MarginContainer/Foreground"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -396,12 +389,12 @@ theme_override_constants/margin_top = 60
 theme_override_constants/margin_right = 60
 theme_override_constants/margin_bottom = 60
 
-[node name="ColorRect" type="ColorRect" parent="Foreground/MarginContainer"]
+[node name="ColorRect" type="ColorRect" parent="MarginContainer/MarginContainer/Foreground/MarginContainer"]
 clip_contents = true
 layout_mode = 2
-color = Color(1, 1, 1, 0.0588235)
+color = Color(0, 0, 0, 0.0588235)
 
-[node name="HarvesterLogo" type="TextureRect" parent="Foreground/MarginContainer/ColorRect"]
+[node name="EliteLogo" type="TextureRect" parent="MarginContainer/MarginContainer/Foreground/MarginContainer/ColorRect"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -420,7 +413,7 @@ texture = ExtResource("7")
 expand_mode = 1
 stretch_mode = 6
 
-[node name="Title" type="TextureRect" parent="Foreground/MarginContainer/ColorRect/HarvesterLogo"]
+[node name="Title" type="TextureRect" parent="MarginContainer/MarginContainer/Foreground/MarginContainer/ColorRect/EliteLogo"]
 layout_mode = 0
 anchor_left = 0.5
 anchor_top = 0.5
@@ -434,36 +427,28 @@ scale = Vector2(0.956783, 0.956783)
 pivot_offset = Vector2(204, 42)
 texture = ExtResource("6")
 expand_mode = 1
-stretch_mode = 6
+stretch_mode = 3
 
-[node name="GDQuestLogo" type="TextureButton" parent="Foreground/MarginContainer/ColorRect"]
+[node name="TeamLogo" type="TextureButton" parent="MarginContainer/MarginContainer/Foreground/MarginContainer/ColorRect"]
 light_mask = 2
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -114.0
-offset_top = 128.0
-offset_right = 114.0
-offset_bottom = 199.0
-grow_horizontal = 2
-grow_vertical = 0
-rotation = 0.167552
+layout_mode = 0
+offset_left = -105.0
+offset_top = 282.0
+offset_right = 701.0
+offset_bottom = 616.0
+rotation = -0.0183362
 scale = Vector2(1.01872, 1.01872)
 pivot_offset = Vector2(114, 35)
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource("4")
-stretch_mode = 5
+ignore_texture_size = true
+stretch_mode = 0
 script = SubResource("10")
 
-[node name="EnvelopeForeground" type="TextureRect" parent="Foreground"]
-anchors_preset = 10
-anchor_right = 1.0
-offset_bottom = 176.0
-texture = ExtResource("1")
-expand_mode = 1
-stretch_mode = 6
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_cg3t5")
+}
+autoplay = "intro"
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

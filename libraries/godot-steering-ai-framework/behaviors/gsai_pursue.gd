@@ -1,15 +1,8 @@
-# Calculates an acceleration to make an agent intercept another based on the
-# target agent's movement.
-# @category - Individual behaviors
 class_name GSAIPursue
 extends GSAISteeringBehavior
 
-# The target agent that the behavior is trying to intercept.
 var target: GSAISteeringAgent
-# The maximum amount of time in the future the behavior predicts the target's
-# location.
 var predict_time_max: float
-
 
 func _init(agent: GSAISteeringAgent, _target: GSAISteeringAgent, _predict_time_max := 1.0) -> void:
 	super._init(agent)
@@ -33,7 +26,6 @@ func _calculate_steering(acceleration: GSAITargetAcceleration) -> void:
 	acceleration.linear *= _get_modified_acceleration()
 
 	acceleration.angular = 0
-
 
 func _get_modified_acceleration() -> float:
 	return agent.linear_acceleration_max

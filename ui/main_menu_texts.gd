@@ -1,7 +1,7 @@
 extends Control
 
 const EXPOSE_DURATION := 2.0
-const FADE_DURATION := 0.5
+const FADE_DURATION := 0.75
 
 @onready var container := $HBoxContainer/CenterContainer
 @onready var tween := create_tween()
@@ -10,7 +10,7 @@ const FADE_DURATION := 0.5
 @onready var playstation := container.get_node("PlaystationX")
 @onready var nintendo := container.get_node("NintendoB")
 
-@onready var elements := [keyboard, xbox, playstation, nintendo]
+@onready var elements := [keyboard]
 
 
 func _ready() -> void:

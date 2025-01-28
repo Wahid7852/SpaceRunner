@@ -66,22 +66,22 @@ layout_mode = 2
 modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.301961, 0.65098, 1, 1)
-text = "any key"
+text = "enter"
 
-[node name="XboxA" type="TextureRect" parent="Context/Texts/HBoxContainer/CenterContainer"]
-modulate = Color(1, 1, 1, 0)
-layout_mode = 2
-texture = ExtResource("4")
+#[node name="XboxA" type="TextureRect" parent="Context/Texts/HBoxContainer/CenterContainer"]
+#modulate = Color(1, 1, 1, 0)
+#layout_mode = 2
+#texture = ExtResource("4")
 
-[node name="PlaystationX" type="TextureRect" parent="Context/Texts/HBoxContainer/CenterContainer"]
-modulate = Color(1, 1, 1, 0)
-layout_mode = 2
-texture = ExtResource("5")
+#[node name="PlaystationX" type="TextureRect" parent="Context/Texts/HBoxContainer/CenterContainer"]
+#modulate = Color(1, 1, 1, 0)
+#layout_mode = 2
+#texture = ExtResource("5")
 
-[node name="NintendoB" type="TextureRect" parent="Context/Texts/HBoxContainer/CenterContainer"]
-modulate = Color(1, 1, 1, 0)
-layout_mode = 2
-texture = ExtResource("6")
+#[node name="NintendoB" type="TextureRect" parent="Context/Texts/HBoxContainer/CenterContainer"]
+#modulate = Color(1, 1, 1, 0)
+#layout_mode = 2
+#texture = ExtResource("6")
 
 [node name="ToStart" type="Label" parent="Context/Texts/HBoxContainer"]
 layout_mode = 2
