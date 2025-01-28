@@ -1,8 +1,3 @@
-# Dots a cluster of asteroids in the world, reporting the amount of iron added
-# to the world via signals. The asteroids are spawned in groups at a random
-# point inside of an asteroid belt that lies a minimum distance from the player
-# station's spawn point. Most of the logic is just making sure that a cluster
-# doesn't appear too close to another.
 class_name AsteroidSpawner
 extends Node2D
 
@@ -18,9 +13,6 @@ signal cluster_depleted(iron_left)
 @export var asteroid_radius := 75.0
 @export var randomize_rotation := true
 
-
-# Spawns new asteroids until there's enough resources to mine in the world.
-# The target amount of resources is `iron_amount_balance_level`.
 func spawn_asteroid_clusters(
 	rng: RandomNumberGenerator, target_iron_amount: float, world_radius: float
 ) -> float:

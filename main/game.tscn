@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://bxbumyjerxld6"]
+[gd_scene load_steps=30 format=3 uid="uid://bxbumyjerxld6"]
 
 [ext_resource type="Script" path="res://world/spawners/asteroid_spawner.gd" id="1"]
 [ext_resource type="Script" path="res://world/spawners/station_spawner.gd" id="2"]
@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://cjw7dyov4br6k" path="res://world/docking_point/station.tscn" id="4"]
 [ext_resource type="PackedScene" uid="uid://b07d5oc6kv45w" path="res://ships/player/player_ship.tscn" id="5"]
 [ext_resource type="PackedScene" uid="uid://b0lepns1qetft" path="res://ui/minimap/map_view.tscn" id="6"]
-[ext_resource type="Script" path="res://world/game_initializer.gd" id="7"]
 [ext_resource type="PackedScene" uid="uid://do18uq3pp0ix7" path="res://vfx/background_stars.tscn" id="8"]
 [ext_resource type="Texture2D" uid="uid://bxv8xsooyour0" path="res://main/white.png" id="11"]
 [ext_resource type="PackedScene" uid="uid://bmrr8sydhyk0t" path="res://world/shaking_camera.tscn" id="12"]
@@ -17,7 +16,7 @@
 [ext_resource type="PackedScene" path="res://ui/menus/upgrades/upgrade_menu.tscn" id="16"]
 [ext_resource type="AudioStream" uid="uid://b5rwtdrww00e7" path="res://ui/minimap/ui_minimap_zoom_in.wav" id="16_1irad"]
 [ext_resource type="Script" path="res://ui/ui.gd" id="17"]
-[ext_resource type="PackedScene" path="res://ui/menus/quit_menu.tscn" id="18"]
+[ext_resource type="PackedScene" uid="uid://dapb2vbqpdne5" path="res://ui/menus/quit_menu.tscn" id="18"]
 [ext_resource type="PackedScene" uid="uid://bv00wk2go2l6s" path="res://ui/screen_fader.tscn" id="19"]
 [ext_resource type="PackedScene" uid="uid://53pcfgby5by6" path="res://vfx/distort_mask_view.tscn" id="20"]
 [ext_resource type="PackedScene" uid="uid://dn2lyjt0cp57p" path="res://ui/hud/hud.tscn" id="22"]
@@ -114,14 +113,14 @@ _data = {
 "disappear": SubResource("Animation_qviax")
 }
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_mwiir"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_vrf8x"]
 viewport_path = NodePath("SubViewport")
 
 [sub_resource type="ShaderMaterial" id="3"]
 resource_local_to_scene = true
 shader = ExtResource("13")
 shader_parameter/displacement_amount = 12.0
-shader_parameter/displacement_mask = SubResource("ViewportTexture_mwiir")
+shader_parameter/displacement_mask = SubResource("ViewportTexture_vrf8x")
 
 [sub_resource type="Environment" id="4"]
 background_mode = 3
@@ -131,7 +130,6 @@ glow_blend_mode = 1
 glow_hdr_threshold = 0.3
 
 [node name="GameInitializer" type="Node"]
-script = ExtResource("7")
 
 [node name="GameWorld" type="Node2D" parent="."]
 script = ExtResource("14")
@@ -206,7 +204,6 @@ mouse_filter = 2
 
 [node name="QuitMenu" parent="UI" instance=ExtResource("18")]
 visible = false
-anchors_preset = 8
 mouse_filter = 2
 
 [node name="PostProcessedLayer" type="CanvasLayer" parent="."]

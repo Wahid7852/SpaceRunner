@@ -71,3 +71,8 @@ func _on_Events_upgrade_chosen(_choice) -> void:
 func _on_AsteroidSpawner_cluster_depleted(iron_left: float) -> void:
 	if iron_left < refresh_threshold_range:
 		asteroid_spawner.spawn_asteroid_clusters(rng, iron_amount_balance_level, radius)
+
+
+func _input(event):
+	if event.is_action_pressed("ui_accept"):
+		get_tree().reload_current_scene()

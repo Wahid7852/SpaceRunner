@@ -5,7 +5,7 @@ class_name GSAIRadiusProximity
 extends GSAIProximity
 
 # The radius around the owning agent to find neighbors in
-var radius := 0.0
+var radius := 0
 
 var _last_frame := 0
 var _scene_tree: SceneTree

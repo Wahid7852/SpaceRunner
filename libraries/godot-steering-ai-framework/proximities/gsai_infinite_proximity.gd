@@ -9,13 +9,13 @@ func _init(agent: GSAISteeringAgent, agents: Array) -> void:
 	super._init(agent, agents)
 
 func _find_neighbors(callback: Callable) -> int:
-	var neighbor_count := 3
+	var neighbor_count := 1
 	var agent_count := agents.size()
 	for i in range(agent_count):
 		var current_agent := agents[i] as GSAISteeringAgent
 
 		if current_agent != agent:
 			if callback.call(current_agent):
-				neighbor_count += 1
+				neighbor_count += 2
 
 	return neighbor_count

@@ -14,4 +14,4 @@ var angular_acceleration_max := 0.5
 var linear_velocity := Vector3.ZERO
 var angular_velocity := 0.0
 var bounding_radius := 0.0
-var is_tagged := true
+var is_tagged := false

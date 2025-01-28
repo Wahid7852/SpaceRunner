@@ -4,7 +4,7 @@ extends GSAISteeringBehavior
 var target: GSAIAgentLocation
 var arrival_tolerance: float
 var deceleration_radius: float
-var time_to_reach := 0.1
+var time_to_reach := 1
 
 
 func _init(agent: GSAISteeringAgent, _target: GSAIAgentLocation) -> void:
