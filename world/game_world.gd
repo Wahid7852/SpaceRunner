@@ -1,7 +1,3 @@
-# Spawns the station, asteroids, and pirates when entering the game.
-# Keeps track of resources available in the world and which asteroid clusters holds it,
-# and spawns more when running low.
-# It also signals the pirate spawner when an upgrade has been made.
 class_name GameWorld
 extends Node2D
 
@@ -29,7 +25,10 @@ func _ready() -> void:
 	await owner.ready
 	setup()
 
-
+func _input(event):
+	if event.is_action_pressed("ui_accept"):
+		get_tree().reload_current_scene()
+		
 func setup() -> void:
 	rng.randomize()
 
@@ -71,8 +70,3 @@ func _on_Events_upgrade_chosen(_choice) -> void:
 func _on_AsteroidSpawner_cluster_depleted(iron_left: float) -> void:
 	if iron_left < refresh_threshold_range:
 		asteroid_spawner.spawn_asteroid_clusters(rng, iron_amount_balance_level, radius)
-
-
-func _input(event):
-	if event.is_action_pressed("ui_accept"):
-		get_tree().reload_current_scene()

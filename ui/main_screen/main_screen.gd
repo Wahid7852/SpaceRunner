@@ -1,6 +1,5 @@
 extends Control
 
-
 @onready var animator := $AnimationPlayer
 
 

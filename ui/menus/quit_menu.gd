@@ -6,12 +6,11 @@ func _ready() -> void:
 	visible = false
 	set_process_input(false)
 
-
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_cancel"):
 		close()
 		get_viewport().set_input_as_handled()
-
+#
 
 func open() -> void:
 	get_tree().paused = true
