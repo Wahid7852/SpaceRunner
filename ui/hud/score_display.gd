@@ -1,6 +1,6 @@
 extends Control
 
-@onready var score_label: Label = $ScoreLabel
+@onready var score_label = $ScoreLabel  # Make sure this Label exists in scene
 
 func _ready() -> void:
 	ScoreManager.score_changed.connect(_on_score_changed)
@@ -15,7 +15,7 @@ func _on_enemy_died(_enemy_position: Vector2) -> void:
 	ScoreManager.increment_score(100)
 
 func _on_ore_mined() -> void:
-	ScoreManager.increment_score(10)
+	ScoreManager.increment_score(100)
 
 func _update_score_text(score: int) -> void:
 	score_label.text = "SCORE: %d" % score
